@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Log Time</title>
+</head>
+<body>
+<div>
+    <div class="page">
+        <div class="be"
+        <div class="last-time">
+            {{ range last-time-entries }}
+            {{  }}
+        </div>
+        <div class="today">
+            {{ range today-entries }}
+            {{ end }}
+        </div>
+        <div class="time entry">
+            <span>Please Enter in your time:</span>
+            <form action="/log-time" method="post" >
+                <div>
+                    Date: <input name="date" type="text" value="{{ default-date }}"/><br/>
+                    Hour: <input name="hour" type="text" value="{{ default-hour }}" /><br/>
+                    Min: <input name="minute" type="text" value="{{ default-min }}"/><br/>
+                    Hours: <input name="total-hours" type="text" value="{{ default-total }}" /><br/>
+                    Project: <input name="project" type="text" value="{{ default-project }}"/>
+                </div>
+                <input type="submit" value="log time">
+            </form>
+        </div>
+    </div>
+    <h2>Previous day's activity</h2>
+    place holder for info
+</div>
+</body>
+</html>
