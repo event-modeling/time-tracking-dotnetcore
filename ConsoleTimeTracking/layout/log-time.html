@@ -3,34 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <title>Log Time</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.8.2/css/bulma.css">
 </head>
 <body>
-<div>
-    <div class="page">
-        <div class="last-time">
-            {{ range last-time-entries }}
-            {{ end }}
+<div class="container">
+    <div class="container">
+        <div class="box">
+            <h1 class="title">Please enter your time</h1>
+            <p>If you already added time today, it will be shown to the left of the form. Your last previous day with time entries will be shown.</p>
         </div>
-        <div class="today">
-            {{ range today-entries }}
-            {{ end }}
-        </div>
-        <div class="time entry">
-            <span>Please Enter in your time:</span>
-            <form action="/log-time" method="post" >
-                <div>
-                    Date: <input name="date" type="text" value="{{ default-date }}"/><br/>
-                    Hour: <input name="hour" type="text" value="{{ default-hour }}" /><br/>
-                    Min: <input name="minute" type="text" value="{{ default-min }}"/><br/>
-                    Hours: <input name="total-hours" type="text" value="{{ default-total }}" /><br/>
-                    Project: <input name="project" type="text" value="{{ default-project }}"/>
+        <div class="block">
+            <div class="tile is-parent">
+                <div class="tile is-child box">
+                    <span>Last Day:</span>
+                    {{ range yesterday }}
+                    <div class="box">
+                    <div><span>Project: {{ Project }}</span></div>
+                    <div><span>Time: {{ StartHour }} : {{ StartMinute }}</span></div>
+                    <div><span>Total Hours: {{ Hours }}</span></div>
+                    </div>
+                    {{ if-nothing }}
+                    <div><span>No money made that day!</span></div>
+                    {{ end }}
                 </div>
-                <input type="submit" value="log time">
-            </form>
+                <div class="tile is-child box">
+                    <span>Earlier Today:</span>
+                    {{ range today }}
+                    <div class="box">
+                    <div><span>Project: {{ Project }}</span></div>
+                    <div><span>Time: {{ StartHour }} : {{ StartMinute }}</span></div>
+                    <div><span>Total Hours: {{ Hours }}</span></div>
+                    </div>
+                    {{ if-nothing }}
+                    <div><span>Nothing yet! Get going!</span></div>
+                    {{ end }}
+                </div>
+                <div class="tile is-child box">
+                    <span>Please Enter in your time:</span>
+
+                    <form action="/log-time.html" method="post">
+                        <div>
+                            Date: <input name="date" type="text" value=""/><br/>
+                            Hour: <input name="hour" type="text" value=""/><br/>
+                            Min: <input name="minute" type="text" value=""/><br/>
+                            Hours: <input name="total-hours" type="text" value=""/><br/>
+                            Project: <input name="project" type="text" value=""/>
+                        </div>
+                        <div class="columns"><div class="column is-one-third">
+                            <input class="button " type="submit" value="log time"></div></div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
-    <h2>Previous day's activity</h2>
-    place holder for info
 </div>
 </body>
 </html>
