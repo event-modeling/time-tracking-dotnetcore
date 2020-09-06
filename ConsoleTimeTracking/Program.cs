@@ -127,7 +127,7 @@ namespace ConsoleTimeTracking {
             return resultString.ToString();
 
             bool IsPlaceHolder(TokenItem tokenItem) { return Regex.Match(tokenItem.Token, @"{{.*}}").Success; }
-            string FieldName(TokenItem tokenItem) { return Regex.Replace(tokenItem.Token, @"{{ (.*) }}", @"$1"); return tokenItem.Token.Trim(@"}{".ToCharArray()); }
+            string FieldName(TokenItem tokenItem) { return Regex.Replace(tokenItem.Token, @"{{ (.*) }}", @"$1"); }
             string RangeName(TokenItem tokenItem) { return Regex.Replace(tokenItem.Token, @"{{ range (.*) }}", @"$1");}
             bool OneOrMoreModelInstancesIdentified(TokenItem tokenItem) { return model.HasChildrenFor(RangeName(tokenItem)) && model[RangeName(tokenItem)].Count != 0; }
             List<Model> GetModelInstances(TokenItem tokenItem) { return model[RangeName(tokenItem)]; }
