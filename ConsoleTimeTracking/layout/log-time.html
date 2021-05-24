@@ -3,60 +3,172 @@
 <head>
     <meta charset="UTF-8">
     <title>Log Time</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.8.2/css/bulma.css">
+    <style>
+        * {
+            font-family: "Roboto Light", sans-serif;
+        }
+
+        body {
+            background-color: aliceblue;
+            padding: 0;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: aliceblue;
+            background-clip: border-box;
+            margin: 0;
+            padding: 20px;
+            box-shadow: rgba(0, 0, 0, 0.1) 0 5px 10px 0;
+        }
+
+        nav {
+            justify-self: right;
+            position: sticky;
+            display: flex;
+            padding: 0;
+            flex-wrap: nowrap;
+            background-color: aliceblue;
+        }
+
+        nav > a {
+            border: 1px grey solid;
+            text-decoration: none;
+            padding: 15px 25px;
+            text-align: center;
+            background-color: lightblue;
+            color: black;
+            flex-shrink: 0;
+        }
+
+        main {
+            background-color: aliceblue;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .below-header {
+            margin-top: 200px;
+        }
+        .sections {
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            margin-left: 0;
+            margin-right: 0;
+            padding: 10px;
+            max-width: 1000px;
+            align-self: center;
+        }
+
+        .section {
+            padding: 0;
+            margin: 0;
+            background-color: white;
+        }
+
+        #time-area {
+            display: flex;
+            justify-content: space-evenly;
+            flex-flow: wrap;
+            background-color: white;
+        }
+
+        .time-section {
+            padding: 15px 15px;
+            margin: 5px 5px 5px 5px;
+            background-color: aliceblue;
+            /*box-shadow: 5px 5px 20px -10px;*/
+            min-width: 150px;
+            flex: 1;
+        }
+        .entry {
+            background-color: lightblue;
+            padding: 2px;
+            margin: 2px;
+        }
+
+        h5 {
+            margin: 10px;
+        }
+    </style>
 </head>
 <body>
-<div class="container">
-    <div class="container">
-        <div class="box">
-            <h1 class="title">Please enter your time</h1>
-            <p>If you already added time today, it will be shown to the left of the form. Your last previous day with time entries will be shown.</p>
+<header>
+    <h1>Time Tracker</h1>
+    <h4>Your Event Sourcing System for Billing</h4>
+    <nav class="menu">
+        <a href="log-time.html">Add Time</a>
+        <a href="reports.html">Reports</a>
+        <a href="payments.html">Payments</a>
+        <a href="about.html">About</a>
+        <a href="logout.html">Logout</a>
+    </nav>
+</header>
+<main class="below-header">
+    <div class="sections">
+        <div class="section">
+            <h3 class="title">Please enter your time</h3>
+            <p>If you already added time today, it will be shown to the left of the form. Your last previous day with
+                time entries will be shown.</p>
         </div>
-        <div class="block">
-            <div class="tile is-parent">
-                <div class="tile is-child box">
-                    <span>Last Day:</span>
-                    {{ range yesterday }}
-                    <div class="box">
+        <div class="section" id="time-area">
+            <div class="time-section">
+                <h5>Last Day:</h5>
+                {{ range yesterday }}
+                <div class="entry">
                     <div><span>Project: {{ Project }}</span></div>
                     <div><span>Time: {{ StartHour }} : {{ StartMinute }}</span></div>
                     <div><span>Total Hours: {{ Hours }}</span></div>
-                    </div>
-                    {{ if-nothing }}
-                    <div><span>No money made that day!</span></div>
-                    {{ end }}
                 </div>
-                <div class="tile is-child box">
-                    <span>Earlier Today:</span>
-                    {{ range today }}
-                    <div class="box">
+                {{ if-nothing }}
+                <div><span>No money made that day!</span></div>
+                {{ end }}
+            </div>
+            <div class="time-section">
+                <h5>Earlier Today:</h5>
+                {{ range today }}
+                <div class="entry">
                     <div><span>Project: {{ Project }}</span></div>
                     <div><span>Time: {{ StartHour }} : {{ StartMinute }}</span></div>
                     <div><span>Total Hours: {{ Hours }}</span></div>
-                    </div>
-                    {{ if-nothing }}
-                    <div><span>Nothing yet! Get going!</span></div>
-                    {{ end }}
                 </div>
-                <div class="tile is-child box">
-                    <span>Please Enter in your time:</span>
+                {{ if-nothing }}
+                <div><span>Nothing yet! Get going!</span></div>
+                {{ end }}
+            </div>
+            <div class="time-section">
+                <h5>Please Enter in your time:</h5>
 
-                    <form action="/log-time.html" method="post">
-                        <div>
-                            Date: <input name="date" type="text" value=""/><br/>
-                            Hour: <input name="hour" type="text" value=""/><br/>
-                            Min: <input name="minute" type="text" value=""/><br/>
-                            Hours: <input name="total-hours" type="text" value=""/><br/>
-                            Project: <input name="project" type="text" value=""/>
-                        </div>
-                        <div class="columns"><div class="column is-one-third">
-                            <input class="button " type="submit" value="log time"></div></div>
-                    </form>
-                </div>
+                <form action="/log-time.html" method="post">
+                    <div>
+                        <label>Date:
+                            <input name="date" type="text" value=""/>
+                        </label><br/>
+                        <label>Hour:
+                        <input name="hour" type="text" value=""/>
+                    </label><br/>
+                        <label>Min:
+                        <input name="minute" type="text" value=""/>
+                    </label><br/>
+                        <label>Hours:
+                        <input name="total-hours" type="text" value=""/>
+                    </label><br/>
+                        <label>Project:
+                        <input name="project" type="text" value=""/>
+                    </label>
+                    </div>
+                    <div class="columns">
+                        <div class="column is-one-third">
+                            <input class="button " type="submit" value="log time"></div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-</div>
+</main>
 </body>
 </html>
