@@ -1,0 +1,85 @@
+* { font-family: "Roboto Light", sans-serif; }
+body {
+    background-color: aliceblue;
+    padding: 0;
+}
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: aliceblue;
+    background-clip: border-box;
+    margin: 0;
+    padding: 20px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 5px 10px 0;
+}
+nav {
+    justify-self: right;
+    position: sticky;
+    display: flex;
+    padding: 0;
+    flex-wrap: nowrap;
+    background-color: aliceblue;
+}
+nav > a {
+    border: 1px grey solid;
+    text-decoration: none;
+    padding: 15px 25px;
+    text-align: center;
+    background-color: lightblue;
+    color: black;
+    flex-shrink: 0;
+}
+main {
+    background-color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.below-header { margin-top: 200px; }
+.sections {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 10px;
+    max-width: 1000px;
+    align-self: center;
+}
+.section {
+    padding: 0;
+    margin: 0;
+    background-color: white;
+}
+#time-area {
+    display: flex;
+    justify-content: space-evenly;
+    flex-flow: wrap;
+    background-color: white;
+}
+.time-section {
+    padding: 15px 15px;
+    margin: 5px 5px 5px 5px;
+    background-color: aliceblue;
+    /*box-shadow: 5px 5px 20px -10px;*/
+    min-width: 150px;
+    flex: 1;
+}
+.entry {
+    background-color: lightblue;
+    padding: 2px;
+    margin: 2px;
+}
+h5 { margin: 10px; }
+#project-label { grid-area: project-label }
+#project { grid-area: project }
+#date-label { grid-area: date-label }
+#date { grid-area: date }
+#time-label { grid-area: time-label }
+#hour { grid-area: hour }
+#time-separator { grid-area: time-separator }
+#minute { grid-area: minute }
+#duration-label { grid-area: duration-label }
+#duration { grid-area: duration }

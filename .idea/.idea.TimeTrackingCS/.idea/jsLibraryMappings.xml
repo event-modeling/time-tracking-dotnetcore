@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JavaScriptLibraryMappings">
+    <file url="file://$PROJECT_DIR$" libraries="{bulma, font-awesome, purecss}" />
+    <file url="file://$PROJECT_DIR$/.idea/.idea.TimeTrackingCS" libraries="{bulma, font-awesome}" />
+  </component>
+</project>

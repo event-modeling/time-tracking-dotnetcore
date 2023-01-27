@@ -104,11 +104,11 @@ namespace ConsoleTimeTracking {
             var accumulateEmpty = false;
             Empty = "";
             while (tokenEnumerator.MoveNext())
-                if (RangeIdentified()) _tokenItems.Add(new TokenTree(tokenEnumerator, tokenEnumerator.Current));
+                if      (RangeIdentified()) _tokenItems.Add(new TokenTree(tokenEnumerator, tokenEnumerator.Current));
                 else if (EndOfRangeIdentified()) return;
                 else if (EmptinessIdentified()) accumulateEmpty = true;
                 else if (accumulateEmpty) Empty += tokenEnumerator.Current; 
-                else _tokenItems.Add(new TokenItem(tokenEnumerator.Current));
+                else                      _tokenItems.Add(new TokenItem(tokenEnumerator.Current));
 
             bool EndOfRangeIdentified() {      return Regex.Matches(tokenEnumerator.Current!, @"{{ end }}").Count == 1; }
             bool EmptinessIdentified() {       return Regex.Matches(tokenEnumerator.Current!, @"{{ if-nothing }}").Count == 1; }

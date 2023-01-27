@@ -3,98 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Log Time</title>
-    <style>
-        * {
-            font-family: "Roboto Light", sans-serif;
-        }
-
-        body {
-            background-color: aliceblue;
-            padding: 0;
-        }
-
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background-color: aliceblue;
-            background-clip: border-box;
-            margin: 0;
-            padding: 20px;
-            box-shadow: rgba(0, 0, 0, 0.1) 0 5px 10px 0;
-        }
-
-        nav {
-            justify-self: right;
-            position: sticky;
-            display: flex;
-            padding: 0;
-            flex-wrap: nowrap;
-            background-color: aliceblue;
-        }
-
-        nav > a {
-            border: 1px grey solid;
-            text-decoration: none;
-            padding: 15px 25px;
-            text-align: center;
-            background-color: lightblue;
-            color: black;
-            flex-shrink: 0;
-        }
-
-        main {
-            background-color: aliceblue;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .below-header {
-            margin-top: 200px;
-        }
-        .sections {
-            background-color: white;
-            display: flex;
-            flex-direction: column;
-            margin-left: 0;
-            margin-right: 0;
-            padding: 10px;
-            max-width: 1000px;
-            align-self: center;
-        }
-
-        .section {
-            padding: 0;
-            margin: 0;
-            background-color: white;
-        }
-
-        #time-area {
-            display: flex;
-            justify-content: space-evenly;
-            flex-flow: wrap;
-            background-color: white;
-        }
-
-        .time-section {
-            padding: 15px 15px;
-            margin: 5px 5px 5px 5px;
-            background-color: aliceblue;
-            /*box-shadow: 5px 5px 20px -10px;*/
-            min-width: 150px;
-            flex: 1;
-        }
-        .entry {
-            background-color: lightblue;
-            padding: 2px;
-            margin: 2px;
-        }
-
-        h5 {
-            margin: 10px;
-        }
-    </style>
+    <link href="css/style.css" rel="stylesheet"/>
 </head>
 <body>
 <header>
@@ -144,26 +53,25 @@
                 <h5>Please Enter in your time:</h5>
 
                 <form action="/log-time.html" method="post">
-                    <div>
-                        <label>Date:
-                            <input name="date" type="text" value=""/>
-                        </label><br/>
-                        <label>Hour:
-                        <input name="hour" type="text" value=""/>
-                    </label><br/>
-                        <label>Min:
-                        <input name="minute" type="text" value=""/>
-                    </label><br/>
-                        <label>Hours:
-                        <input name="total-hours" type="text" value=""/>
-                    </label><br/>
-                        <label>Project:
-                        <input name="project" type="text" value=""/>
-                    </label>
-                    </div>
-                    <div class="columns">
-                        <div class="column is-one-third">
-                            <input class="button " type="submit" value="log time"></div>
+                    <div id="time-grid">
+                        <div id="date-label"><label for="hour">Date:</label></div>
+                        <div id="date"><input name="date" type="text"/></div>
+                        <div id="hour"><label>Hour:<input name="hour" type="text" value=""/>
+                            </label><br/>
+                            <label>Min:
+                                <input name="minute" type="text" value=""/>
+                            </label><br/>
+                            <label>Hours:
+                                <input name="total-hours" type="text" value=""/>
+                            </label><br/>
+                            <label>Project:
+                                <input name="project" type="text" value=""/>
+                            </label>
+                        </div>
+                        <div class="columns">
+                            <div class="column is-one-third">
+                                <input class="button " type="submit" value="log time"></div>
+                        </div>
                     </div>
                 </form>
             </div>
